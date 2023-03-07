@@ -8,14 +8,21 @@
     body { padding-top: 50px; }
   </style>
 </head>
+  <script>
+    const setBg = () => {
+      const randomColor = Math.floor(Math.random()*16777215).toString(16);
+      document.body.style.backgroundColor = "#" + randomColor;
+      color.innerHTML = "#" + randomColor;
+    }
+
+    genNew.addEventListener("click", setBg);
+    setBg();
+  </script>
 <body>
 
   <div class="container">
     <div class="jumbotron">
-      <button type="button">Click Build Raspi</button>
-    </div>
-     <div class="jumbotron">
-      <button type="button">Click Build AWS</button>
+      <button type="button" id="genNew">Click Me !</button>
     </div>
   </div>
     
