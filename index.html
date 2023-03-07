@@ -13,13 +13,13 @@
   <h1>
     <button onclick="myFunc()">Click Me !</button>
   </h1>
-  <h3>Color: <span id="color"></span></h3>
+  <h3><span id="color"></span></h3>
   
    <script>
       function myFunc(){
          var randomColor = Math.floor(Math.random()*16777215).toString(16);
          document.body.style.backgroundColor = "#" + randomColor;
-         document.getElementById("color").innerHTML = "#" + randomColor;
+         document.getElementById("color").innerHTML = "Color: #" + randomColor;
       }
    </script>
 </body>
