@@ -11,7 +11,7 @@ app.get('/', function(req, res) {
 });
 app.get('/build', function(req, res) {
 
-  request('http://35.77.33.182:30008/build', function (error, response, body) {
+  request('http://172.31.16.47:31197/build', function (error, response, body) {
       if (!error && response.statusCode === 200) {
           console.log(body) 
       }
@@ -24,7 +24,7 @@ app.get('/build', function(req, res) {
 });
 app.get('/test', function(req, res) {
 
-  request('http://35.77.33.182:30008/test', function (error, response, body) {
+  request('http://172.31.16.47:31197/test', function (error, response, body) {
       if (!error && response.statusCode === 200) {
           console.log(body) 
       }
@@ -35,7 +35,7 @@ app.get('/test', function(req, res) {
   res.sendFile(path.join(__dirname, '/test.html'));
 });
 app.get('/analysis', function(req, res) {
-  request('http://35.77.33.182:30008/analysis', function (error, response, body) {
+  request('http://172.31.16.47:31197/analysis', function (error, response, body) {
       if (!error && response.statusCode === 200) {
           console.log(body) 
       }
@@ -63,5 +63,5 @@ function createdDate (file) {
 
   return birthtime
 }
-app.listen(30008);
+app.listen(3000);
 
