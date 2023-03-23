@@ -6,62 +6,22 @@ const app = express();
 const Fs = require('fs')
 const request = require('request');
 // sendFile will go here
-app.get('/', function(req, res) {
-  res.sendFile(path.join(__dirname, '/index.html'));
-});
 app.get('/build', function(req, res) {
-
-  request('http://172.31.16.47:31197/build', function (error, response, body) {
-      if (!error && response.statusCode === 200) {
-          console.log(body) 
-      }
-  });
-  if (cluster.isWorker) {
-    console.log(cluster.worker);
-  }
-
-  res.sendFile(path.join(__dirname, '/build.html'));
-});
-app.get('/test', function(req, res) {
-
-  request('http://172.31.16.47:31197/test', function (error, response, body) {
-      if (!error && response.statusCode === 200) {
-          console.log(body) 
-      }
-  });
-  if (cluster.isWorker) {
-    console.log(cluster.worker);
-  }
-  res.sendFile(path.join(__dirname, '/test.html'));
-});
-app.get('/analysis', function(req, res) {
-  request('http://172.31.16.47:31197/analysis', function (error, response, body) {
-      if (!error && response.statusCode === 200) {
-          console.log(body) 
-      }
-  })
-  if (cluster.isWorker) {
-    console.log(cluster.worker);
-  }
-  res.sendFile(path.join(__dirname, '/analysis.html'));
-});
-
-app.get('/build', function(req, res) {
-  createdDate('build.txt');
+  createdDate('/tmp/build.txt');
   res.sendStatus(200);
 });
 app.get('/test', function(req, res) {
-  createdDate('test.txt');
+  createdDate('/tmp/test.txt');
   res.sendStatus(200);
 });
-app.get('/analysis', function(req, res) {
-  createdDate('analysis.txt');
+app.get('/analysys', function(req, res) {
+  createdDate('/tmp/analysys.txt');
   res.sendStatus(200);
 });
-function createdDate (file) {  
-  const { birthtime } = Fs.statSync(file)
-
-  return birthtime
+function createdDate (file) {
+  let date_ob = new Date();
+  console.log(date_ob);
+  Fs.writeFile(file, JSON.stringify(date_ob));
 }
 app.listen(3000);
 
